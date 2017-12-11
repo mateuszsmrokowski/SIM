@@ -486,6 +486,7 @@ def testOrginal(ilosc, File='txt'):
 #testBetter(1)    
 #testOrginal(1)
 def press(button):
+    
     if button == "Better":
         x = testBetter(1)
         app.setLabel("l1", x)
@@ -494,7 +495,7 @@ def press(button):
         app.setLabel("l1", x)
         
 app = gui()
-app.setGeometry("450x600")
+app.setGeometry("550x600")
 app.addLabel("title1", "Flota1 ", 0, 0, 1)
 app.addLabel("title2", "Flota2 ", 0, 1, 2)
 app.addLabelEntry("mt1", 1, 0)
@@ -529,7 +530,9 @@ app.addLabelEntry("p2",  13, 1)
 app.addLabel("title", "Lets the battle begin", 14, 0, 2)
 app.setLabelBg("title", "red")
 app.addButtons(["Better"],  press, 15, 0)
-app.addButtons(["Orginal"],  press, 15, 1)
+app.addButtons(["Load From File"],  press, 15, 1)
+app.addButtons(["Orginal"],  press, 15, 2)
+
 app.addLabel("l1", "", 16, 0, 2)
 app.go()
 
