@@ -1,0 +1,14 @@
+skrót nazwa punkty_strukturalne osłona atak
+mt mały_transporter 400 10 5
+dt duży_transporter 1200 25 5
+lm lekki_myśliwiec 400	10 50
+cm ciężki_myśliwiec 1000 25 150
+kr krążownik 2700 50 400
+ow okręt_wojenny 6000 200 1000
+sk statek_kolonizacyjny 3000 100 50
+re recykler 1600 10 1
+ss sonda_szpiegowska 100 0 0
+b bombowiec 7500 500 1000
+n niszczyciel 11000 500 2000
+gs gwiazda_śmierci 900000 50000 200000
+p pancernik 7000 400 700

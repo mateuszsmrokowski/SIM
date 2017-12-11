@@ -1,0 +1,14 @@
+skrot ilosc
+mt 500
+dt 0
+lm 0
+cm 0
+kr 10000
+ow 0
+sk 0
+re 0
+ss 0
+b 0
+n 0
+gs 0
+p 0
