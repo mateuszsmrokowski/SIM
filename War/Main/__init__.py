@@ -6,6 +6,7 @@ import sys
 sys.path.append("/home/student/eclipse-workspace/War/Main")
 from appJar import gui
 import numpy, time, random, multiprocessing
+Status = 0;
 class DaneStatkow():
     """
     Klasa odpowiadająca za załadowanie danych z plików tekstowych
@@ -393,6 +394,7 @@ class Flota():
             print self.Flota1[i].skrot +' '+ self.Flota1[i].nazwa + ' ' + str(self.Flota1[i].pktstr) + ' ' + str(self.Flota1[i].oslona) + ' ' + str(self.Flota1[i].atak)
         for i in range(len(self.Flota2)):
             print self.Flota2[i].skrot +' '+ self.Flota2[i].nazwa + ' ' + str(self.Flota2[i].pktstr) + ' ' + str(self.Flota2[i].oslona) + ' ' + str(self.Flota2[i].atak)
+
 def testBetter(ilosc, File='txt'):
     """
     Funkcja odpowiadająca za test symulacji dla własnej funkcji
@@ -483,8 +485,6 @@ def testOrginal(ilosc, File='txt'):
         X[1] += len(z[1])
     return 'Ile FLoty 1? : '+ str(X[1]/ilosc) + 'Ile Floty 2? : '+ str(X[0]/ilosc) + 'Czas', str(time.time() - t1)
 
-#testBetter(1)    
-#testOrginal(1)
 def press(button):
     
     if button == "Better":
@@ -494,7 +494,16 @@ def press(button):
         x = testOrginal(1)
         app.setLabel("l1", x)
         
+    if button == "Load From File":
+        if Status == 0:
+            app.setButton("Load From File", "Load From App")
+            Status = 1
+        if Status == 1:
+            app.setButton("Load From File", "Load From File")
+            Status = 0
+        
 app = gui()
+#Status = 0
 app.setGeometry("550x600")
 app.addLabel("title1", "Flota1 ", 0, 0, 1)
 app.addLabel("title2", "Flota2 ", 0, 1, 2)
@@ -526,7 +535,6 @@ app.addLabelEntry("b2",  10, 1)
 app.addLabelEntry("n2",  11, 1)
 app.addLabelEntry("gs2", 12, 1)
 app.addLabelEntry("p2",  13, 1)
-
 app.addLabel("title", "Lets the battle begin", 14, 0, 2)
 app.setLabelBg("title", "red")
 app.addButtons(["Better"],  press, 15, 0)
