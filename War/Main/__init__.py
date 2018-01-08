@@ -6,7 +6,7 @@ import sys
 sys.path.append("/home/student/eclipse-workspace/War/Main")
 from appJar import gui
 import numpy, time, random, multiprocessing
-Status = 0;
+Status = 0
 class DaneStatkow():
     """
     Klasa odpowiadająca za załadowanie danych z plików tekstowych
@@ -486,62 +486,75 @@ def testOrginal(ilosc, File='txt'):
     return 'Ile FLoty 1? : '+ str(X[1]/ilosc) + 'Ile Floty 2? : '+ str(X[0]/ilosc) + 'Czas', str(time.time() - t1)
 
 def press(button):
-    
+    global Status
     if button == "Better":
-        x = testBetter(1)
+        if Status == 0:
+            x = testBetter(1, 'x')
+        else:
+            x = testBetter(1, 'txt')
         app.setLabel("l1", x)
+        
     if button == "Orginal":
-        x = testOrginal(1)
+        if Status == 0:
+            x = testOrginal(1, 'x')
+        else:
+            x = testOrginal(1, 'txt')
         app.setLabel("l1", x)
         
     if button == "Load From File":
         if Status == 0:
             app.setButton("Load From File", "Load From App")
+            #print "0"
             Status = 1
-        if Status == 1:
+            
+        elif Status == 1:
             app.setButton("Load From File", "Load From File")
+            #print "1"
             Status = 0
         
         
-app = gui()
-#Status = 0
-app.setGeometry("550x600")
-app.addLabel("title1", "Flota1 ", 0, 0, 1)
-app.addLabel("title2", "Flota2 ", 0, 1, 2)
-app.addLabelEntry("mt1", 1, 0)
-app.addLabelEntry("dt1", 2, 0)
-app.addLabelEntry("lm1", 3, 0)
-app.addLabelEntry("cm1", 4, 0)
-app.addLabelEntry("kr1", 5, 0)
-app.addLabelEntry("ow1", 6, 0)
-app.addLabelEntry("sk1", 7, 0)
-app.addLabelEntry("re1", 8, 0)
-app.addLabelEntry("ss1", 9, 0)
-app.addLabelEntry("b1",  10, 0)
-app.addLabelEntry("n1",  11, 0)
-app.addLabelEntry("gs1", 12, 0)
-app.addLabelEntry("p1",  13, 0)
+def GUI():
+    global app
+    app = gui()
+    #Status = 0
+    app.setGeometry("550x600")
+    app.addLabel("title1", "Flota1 ", 0, 0, 1)
+    app.addLabel("title2", "Flota2 ", 0, 1, 2)
+    app.addLabelEntry("mt1", 1, 0)
+    app.addLabelEntry("dt1", 2, 0)
+    app.addLabelEntry("lm1", 3, 0)
+    app.addLabelEntry("cm1", 4, 0)
+    app.addLabelEntry("kr1", 5, 0)
+    app.addLabelEntry("ow1", 6, 0)
+    app.addLabelEntry("sk1", 7, 0)
+    app.addLabelEntry("re1", 8, 0)
+    app.addLabelEntry("ss1", 9, 0)
+    app.addLabelEntry("b1",  10, 0)
+    app.addLabelEntry("n1",  11, 0)
+    app.addLabelEntry("gs1", 12, 0)
+    app.addLabelEntry("p1",  13, 0)
 
 
-app.addLabelEntry("mt2", 1, 1)
-app.addLabelEntry("dt2", 2, 1)
-app.addLabelEntry("lm2", 3, 1)
-app.addLabelEntry("cm2", 4, 1)
-app.addLabelEntry("kr2", 5, 1)
-app.addLabelEntry("ow2", 6, 1)
-app.addLabelEntry("sk2", 7, 1)
-app.addLabelEntry("re2", 8, 1)
-app.addLabelEntry("ss2", 9, 1)
-app.addLabelEntry("b2",  10, 1)
-app.addLabelEntry("n2",  11, 1)
-app.addLabelEntry("gs2", 12, 1)
-app.addLabelEntry("p2",  13, 1)
-app.addLabel("title", "Lets the battle begin", 14, 0, 2)
-app.setLabelBg("title", "red")
-app.addButtons(["Better"],  press, 15, 0)
-app.addButtons(["Load From File"],  press, 15, 1)
-app.addButtons(["Orginal"],  press, 15, 2)
+    app.addLabelEntry("mt2", 1, 1)
+    app.addLabelEntry("dt2", 2, 1)
+    app.addLabelEntry("lm2", 3, 1)
+    app.addLabelEntry("cm2", 4, 1)
+    app.addLabelEntry("kr2", 5, 1)
+    app.addLabelEntry("ow2", 6, 1)
+    app.addLabelEntry("sk2", 7, 1)
+    app.addLabelEntry("re2", 8, 1)
+    app.addLabelEntry("ss2", 9, 1)
+    app.addLabelEntry("b2",  10, 1)
+    app.addLabelEntry("n2",  11, 1)
+    app.addLabelEntry("gs2", 12, 1)
+    app.addLabelEntry("p2",  13, 1)
+    app.addLabel("title", "Lets the battle begin", 14, 0, 2)
+    app.setLabelBg("title", "red")
+    app.addButtons(["Better"],  press, 15, 0)
+    app.addButtons(["Load From File"],  press, 15, 2)
+    app.addButtons(["Orginal"],  press, 15, 1)
 
-app.addLabel("l1", "", 16, 0, 2)
-app.go()
+    app.addLabel("l1", "", 16, 0, 2)
+    app.go()
 
+GUI()
